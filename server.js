@@ -42,7 +42,7 @@ fetch("/todos/", {
             console.log(t)
       });
 */
-app.post("/todos", function (req, res) {
+app.post("/", function (req, res) {
   var todo = req.body.todo;
   todo.id = ++counter;
   todos.push(todo);
