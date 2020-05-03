@@ -11,13 +11,16 @@ app.use(function (req, res, next) {
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept"
   );
-  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE"); //OPTIONS
+  res.header("Access-Control-Allow-Methods", "GET, POST"); //OPTIONS
   next();
 });
 
 const { FooBar } = require("./src/foobar");
+const { Customer } = require("./src/customer");
+const { Order } = require("./src/order");
+const { Beer } = require("./src/beer");
 //console.log(FooBar);
-var todos = [
+/*var todos = [
   {
     task: "go home",
     id: 1,
@@ -27,9 +30,14 @@ var todos = [
     id: 2,
   },
 ];
-let counter = todos.length;
-
+let counter = todos.length;*/
 app.get("/", function (req, res) {
+  res.json({
+    message:
+      "Nothing here, please read the documentation or try something like /beertypes or /data/:key",
+  });
+});
+app.get("/data/:key", function (req, res) {
   // send back a json response
   let data = FooBar.getData();
   delete data.beertypes;
@@ -39,31 +47,32 @@ app.get("/beertypes", function (req, res) {
   let data = FooBar.getData();
   res.json(data.beertypes);
 });
-/*
-var postData = JSON.stringify({
-  todo: {
-    id: 8,
-    task: "hej mor"
-}});
-fetch("/todos/", {
-        method: "post",
-        headers: {
-            'Content-Type': 'application/json; charset=utf-8'
-        },
-        body: postData
-    })
-    .then(d => d.json())
-    .then(t => {
-            console.log(t)
-      });
-*/
-app.post("/", function (req, res) {
-  var todo = req.body.todo;
-  todo.id = ++counter;
-  todos.push(todo);
+
+app.get("/order/:key", function (req, res) {
+  const structure = [
+    { name: "Hoppily Ever After", amount: 1 },
+    { name: "Hoppily Ever After", amount: 1 },
+    { name: "Hoppily Ever After", amount: 1 },
+    { name: "Hoppily Ever After", amount: 1 },
+  ];
+  const customer = new Customer();
+
+  //const numberOfBeers = 2;
+  const order = new Order(customer);
+
+  const beerTypes = FooBar.getAvailableBeerTypes();
+  for (let i = 0; i < structure.length; i++) {
+    const beerData = beerTypes.find((b) => b.name === structure[i].name);
+    for (let amount = 0; amount < structure[i].amount; amount++) {
+      const beer = new Beer(beerData);
+      order.addBeer(beer);
+    }
+  }
+  FooBar.addCustomer(customer);
+
   // res.send converts to json as well
   // but req.json will convert things like null and undefined to json too although its not valid
-  res.send(todo); //seems like it accepts only one param [todos, todo]
+  res.send({ message: "added" });
 });
 
 // get the parameters from the route
