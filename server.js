@@ -52,12 +52,12 @@ app.post("/todos", function (req, res) {
 });
 
 // get the parameters from the route
-app.get("/todos/:id", function (req, res) {
+/*app.get("/todos/:id", function (req, res) {
   var todo = _.find(todos, { id: parseInt(req.params.id) });
 
   //res.json(req.params.id)
   res.json(todo);
-});
+});*/
 
 // start server on port 3000
-app.listen(3000);
+app.listen(5000);
