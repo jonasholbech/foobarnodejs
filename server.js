@@ -18,14 +18,14 @@ const { FooBar } = require("./src/foobar");
 const { Customer } = require("./src/customer");
 const { Order } = require("./src/order");
 const { Beer } = require("./src/beer");
-
+/*
 app.get("/", function (req, res) {
   res.json({
     message:
       "Nothing here, please read the documentation or try something like GET /beertypes, GET /data/:key or POST /order/:key",
   });
-});
-app.get("/data/:key", function (req, res) {
+});*/
+app.get("/", function (req, res) {
   // send back a json response
   let data = FooBar.getData();
   delete data.beertypes;
@@ -36,8 +36,8 @@ app.get("/beertypes", function (req, res) {
   res.json(data.beertypes);
 });
 
-app.get("/order/:key", function (req, res) {
-  const key = req.params.key;
+app.get("/order", function (req, res) {
+  //const key = req.params.key;
   const structure = [
     { name: "Hoppily Ever After", amount: 1 },
     { name: "Hoppily Ever After", amount: 1 },

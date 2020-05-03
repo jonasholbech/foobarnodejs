@@ -1,0 +1,7 @@
+{
+  "name": "FooBar exam project, server",
+  "description": "Minimal express wrapper around client side code",
+  "repository": "https://github.com/jonasholbech/foobarnodejs",
+  "logo": "https://node-js-sample.herokuapp.com/node.png",
+  "keywords": ["node", "express", "static"]
+}
