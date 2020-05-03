@@ -3,7 +3,7 @@ const { Storage } = require("./storage.js");
 //import {BeerType,BeerTypes} from './beertype.js';
 const { BeerType, BeerTypes } = require("./beertype.js");
 //import { Tap } from "./tap.js";
-const { Tap } = require("./Tap.js");
+const { Tap } = require("./tap.js");
 //import { Bartender } from "./bartender.js";
 const { Bartender } = require("./bartender.js");
 
