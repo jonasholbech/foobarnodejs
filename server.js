@@ -1,7 +1,7 @@
 /* eslint-env node, es6 */
 const express = require("express");
 const bodyParser = require("body-parser");
-var _ = require("lodash");
+//var _ = require("lodash");
 var app = express();
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
