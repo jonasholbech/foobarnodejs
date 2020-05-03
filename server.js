@@ -36,20 +36,22 @@ app.get("/beertypes", function (req, res) {
   res.json(data.beertypes);
 });
 
-app.get("/order", function (req, res) {
+app.post("/order", function (req, res) {
   //const key = req.params.key;
-  const structure = [
+  const structure = req.body;
+  /*const structure = [
     { name: "Hoppily Ever After", amount: 1 },
     { name: "Hoppily Ever After", amount: 1 },
     { name: "Hoppily Ever After", amount: 1 },
     { name: "Hoppily Ever After", amount: 1 },
-  ];
+  ];*/
   const customer = new Customer();
 
   //const numberOfBeers = 2;
   const order = new Order(customer);
 
   const beerTypes = FooBar.getAvailableBeerTypes();
+  console.log(beerTypes);
   for (let i = 0; i < structure.length; i++) {
     const beerData = beerTypes.find((b) => b.name === structure[i].name);
     for (let amount = 0; amount < structure[i].amount; amount++) {
