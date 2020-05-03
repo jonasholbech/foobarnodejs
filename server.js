@@ -19,7 +19,7 @@ var todos = [
 ];
 let counter = todos.length;
 
-app.get("/bardata", function (req, res) {
+app.get("/", function (req, res) {
   // send back a json response
   res.json(FooBar.getData());
 });
