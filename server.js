@@ -1,7 +1,6 @@
 /* eslint-env node, es6 */
 const express = require("express");
 const bodyParser = require("body-parser");
-//var _ = require("lodash");
 var app = express();
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
@@ -19,22 +18,11 @@ const { FooBar } = require("./src/foobar");
 const { Customer } = require("./src/customer");
 const { Order } = require("./src/order");
 const { Beer } = require("./src/beer");
-//console.log(FooBar);
-/*var todos = [
-  {
-    task: "go home",
-    id: 1,
-  },
-  {
-    task: "watch video",
-    id: 2,
-  },
-];
-let counter = todos.length;*/
+
 app.get("/", function (req, res) {
   res.json({
     message:
-      "Nothing here, please read the documentation or try something like /beertypes or /data/:key",
+      "Nothing here, please read the documentation or try something like GET /beertypes, GET /data/:key or POST /order/:key",
   });
 });
 app.get("/data/:key", function (req, res) {
@@ -49,6 +37,7 @@ app.get("/beertypes", function (req, res) {
 });
 
 app.get("/order/:key", function (req, res) {
+  const key = req.params.key;
   const structure = [
     { name: "Hoppily Ever After", amount: 1 },
     { name: "Hoppily Ever After", amount: 1 },
@@ -75,13 +64,4 @@ app.get("/order/:key", function (req, res) {
   res.send({ message: "added" });
 });
 
-// get the parameters from the route
-/*app.get("/todos/:id", function (req, res) {
-  var todo = _.find(todos, { id: parseInt(req.params.id) });
-
-  //res.json(req.params.id)
-  res.json(todo);
-});*/
-
-// start server on port 3000
 app.listen(process.env.PORT || 3000);
