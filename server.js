@@ -31,9 +31,14 @@ let counter = todos.length;
 
 app.get("/", function (req, res) {
   // send back a json response
-  res.json(FooBar.getData());
+  let data = FooBar.getData();
+  delete data.beertypes;
+  res.json(data);
 });
-
+app.get("/beertypes", function (req, res) {
+  let data = FooBar.getData();
+  res.json(data.beertypes);
+});
 /*
 var postData = JSON.stringify({
   todo: {
