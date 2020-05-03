@@ -60,4 +60,4 @@ app.post("/todos", function (req, res) {
 });*/
 
 // start server on port 3000
-app.listen(5000);
+app.listen(process.env.PORT || 3000);
