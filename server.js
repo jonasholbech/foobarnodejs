@@ -51,7 +51,7 @@ app.post("/order", function (req, res) {
   const order = new Order(customer);
 
   const beerTypes = FooBar.getAvailableBeerTypes();
-  console.log(beerTypes);
+  //console.log(beerTypes);
   for (let i = 0; i < structure.length; i++) {
     const beerData = beerTypes.find((b) => b.name === structure[i].name);
     for (let amount = 0; amount < structure[i].amount; amount++) {
