@@ -4,7 +4,7 @@
 
 ### What is this?
 
-<a href="https://heroku.com/deploy">
+<a href="https://heroku.com/deploy?template=https://github.com/jonasholbech/foobarnodejs/tree/master">
   <img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy">
 </a>
 
@@ -26,3 +26,5 @@ Send a post request with the following payload/footprint
   { name: "Hoppily Ever After", amount: 1 },
 ];
 ```
+
+# Restart the server every morning

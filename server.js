@@ -46,12 +46,9 @@ app.post("/order", function (req, res) {
     { name: "Hoppily Ever After", amount: 1 },
   ];*/
   const customer = new Customer();
-
-  //const numberOfBeers = 2;
   const order = new Order(customer);
 
   const beerTypes = FooBar.getAvailableBeerTypes();
-  //console.log(beerTypes);
   for (let i = 0; i < structure.length; i++) {
     const beerData = beerTypes.find((b) => b.name === structure[i].name);
     for (let amount = 0; amount < structure[i].amount; amount++) {
