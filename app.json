@@ -2,6 +2,6 @@
   "name": "FooBar exam project, server",
   "description": "Minimal express wrapper around client side code",
   "repository": "https://github.com/jonasholbech/foobarnodejs",
-  "logo": "https://node-js-sample.herokuapp.com/node.png",
+  "logo": "https://kea-alt-del.dk/2020/front/foobar.png",
   "keywords": ["node", "express", "static"]
 }
