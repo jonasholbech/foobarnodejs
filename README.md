@@ -39,5 +39,3 @@ Send a post request with the following payload/footprint
   { name: "Row 26", amount: 2 },
 ];
 ```
-
-# Restart the server every morning
