@@ -18,6 +18,18 @@ const { FooBar } = require("./src/foobar");
 const { Customer } = require("./src/customer");
 const { Order } = require("./src/order");
 const { Beer } = require("./src/beer");
+const beers = [
+  "El Hefe",
+  "Fairy Tale Ale",
+  "GitHop",
+  "Hollaback Lager",
+  "Hoppily Ever After",
+  "Mowintime",
+  "Row 26",
+  "Ruined Childhood",
+  "Sleighride",
+  "Steampunk",
+]; //TODO: should be taken from conf
 /*
 app.get("/", function (req, res) {
   res.json({
@@ -39,12 +51,38 @@ app.get("/beertypes", function (req, res) {
 app.post("/order", function (req, res) {
   //const key = req.params.key;
   const structure = req.body;
+  if (!Array.isArray(structure)) {
+    res.send({ message: "Wrong data format supplied", status: 500 });
+  }
+  console.log(structure);
   /*const structure = [
     { name: "Hoppily Ever After", amount: 1 },
     { name: "Hoppily Ever After", amount: 1 },
     { name: "Hoppily Ever After", amount: 1 },
     { name: "Hoppily Ever After", amount: 1 },
   ];*/
+
+  //Validate data structure
+  const hasProps = (currentItem) => {
+    return currentItem.name && currentItem.amount;
+  };
+
+  if (!structure.every(hasProps)) {
+    res.send({
+      message: "Wrong data format supplied, missing name or amount",
+      status: 500,
+    });
+  }
+
+  structure.forEach((item) => {
+    if (!beers.includes(item.name)) {
+      res.send({
+        message: "Unknown beer: " + item.name,
+        status: 500,
+      });
+    }
+  });
+  // expected output: true
   const customer = new Customer();
   const order = new Order(customer);
 
@@ -60,7 +98,7 @@ app.post("/order", function (req, res) {
 
   // res.send converts to json as well
   // but req.json will convert things like null and undefined to json too although its not valid
-  res.send({ message: "added" });
+  res.send({ message: "added", status: 200 });
 });
 
 app.listen(process.env.PORT || 3000);
