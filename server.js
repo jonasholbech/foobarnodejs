@@ -82,6 +82,17 @@ app.post("/order", function (req, res) {
       });
     }
   });
+  const data = FooBar.getData();
+  structure.forEach((item) => {
+    const found = data.taps.find((tap) => tap.beer === item.name);
+    if (!found) {
+      res.send({
+        message: "We are not serving: " + item.name + " right now!",
+        status: 500,
+      });
+    }
+  });
+
   // expected output: true
   const customer = new Customer();
   const order = new Order(customer);

@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node server.js",
     "develop": "yarn dev:start",
-    "dev:start": "nodemon server.js"
+    "dev:start": "nodemon server.js",
+    "deploy": "git push heroku master"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
