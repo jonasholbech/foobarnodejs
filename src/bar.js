@@ -109,6 +109,7 @@ class Bar {
     customer.addedToQueue(Date.now());
     this.queue.push(customer);
     Logger.log("Added customer " + customer.id + " to queue");
+    return customer.id;
   }
 
   whenOpen(callback) {

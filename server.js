@@ -105,11 +105,11 @@ app.post("/order", function (req, res) {
       order.addBeer(beer);
     }
   }
-  FooBar.addCustomer(customer);
-
+  const id = FooBar.addCustomer(customer);
+  console.log(FooBar);
   // res.send converts to json as well
   // but req.json will convert things like null and undefined to json too although its not valid
-  res.send({ message: "added", status: 200 });
+  res.send({ message: "added", status: 200, id: id });
 });
 
 app.listen(process.env.PORT || 3000);
