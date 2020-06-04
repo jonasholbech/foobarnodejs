@@ -66,50 +66,60 @@ app.post("/order", function (req, res) {
   const hasProps = (currentItem) => {
     return currentItem.name && currentItem.amount;
   };
-
-  if (!structure.every(hasProps)) {
-    res.send({
-      message: "Wrong data format supplied, missing name or amount",
-      status: 500,
+  let sent = false;
+  if (!sent) {
+    if (!structure.every(hasProps)) {
+      sent = true;
+      res.send({
+        message: "Wrong data format supplied, missing name or amount",
+        status: 500,
+      });
+    }
+  }
+  if (!sent) {
+    structure.forEach((item) => {
+      if (!beers.includes(item.name)) {
+        sent = true;
+        res.send({
+          message: "Unknown beer: " + item.name,
+          status: 500,
+        });
+      }
     });
   }
-
-  structure.forEach((item) => {
-    if (!beers.includes(item.name)) {
-      res.send({
-        message: "Unknown beer: " + item.name,
-        status: 500,
-      });
-    }
-  });
-  const data = FooBar.getData();
-  structure.forEach((item) => {
-    const found = data.taps.find((tap) => tap.beer === item.name);
-    if (!found) {
-      res.send({
-        message: "We are not serving: " + item.name + " right now!",
-        status: 500,
-      });
-    }
-  });
-
-  // expected output: true
-  const customer = new Customer();
-  const order = new Order(customer);
-
-  const beerTypes = FooBar.getAvailableBeerTypes();
-  for (let i = 0; i < structure.length; i++) {
-    const beerData = beerTypes.find((b) => b.name === structure[i].name);
-    for (let amount = 0; amount < structure[i].amount; amount++) {
-      const beer = new Beer(beerData);
-      order.addBeer(beer);
-    }
+  if (!sent) {
+    const data = FooBar.getData();
+    structure.forEach((item) => {
+      const found = data.taps.find((tap) => tap.beer === item.name);
+      if (!found && !sent) {
+        sent = true;
+        res.send({
+          message: "We are not serving: " + item.name + " right now!",
+          status: 500,
+        });
+      }
+    });
   }
-  const id = FooBar.addCustomer(customer);
-  console.log(FooBar);
-  // res.send converts to json as well
-  // but req.json will convert things like null and undefined to json too although its not valid
-  res.send({ message: "added", status: 200, id: id });
+  // expected output: true
+  if (!sent) {
+    sent = true;
+    const customer = new Customer();
+    const order = new Order(customer);
+
+    const beerTypes = FooBar.getAvailableBeerTypes();
+    for (let i = 0; i < structure.length; i++) {
+      const beerData = beerTypes.find((b) => b.name === structure[i].name);
+      for (let amount = 0; amount < structure[i].amount; amount++) {
+        const beer = new Beer(beerData);
+        order.addBeer(beer);
+      }
+    }
+    const id = FooBar.addCustomer(customer);
+    console.log(FooBar);
+    // res.send converts to json as well
+    // but req.json will convert things like null and undefined to json too although its not valid
+    res.send({ message: "added", status: 200, id: id });
+  }
 });
 
 app.listen(process.env.PORT || 3000);
