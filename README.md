@@ -1,6 +1,6 @@
 # Front End Design Elective
 
-## Spring 2020
+## Autumn 2020
 
 ### What is this?
 
