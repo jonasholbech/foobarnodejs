@@ -1,9 +1,8 @@
 /* eslint-env node, es6 */
 const express = require("express");
-const bodyParser = require("body-parser");
 var app = express();
-app.use(bodyParser.json()); // support json encoded bodies
-app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
