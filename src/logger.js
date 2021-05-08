@@ -1,7 +1,5 @@
-/* logger is used for debugging - everything logs to here, and filters control how the log is shown/stored 
-
-
-*/
+/* logger is used for debugging - everything logs to here, and filters control how the log is shown/stored
+ */
 class _Logger {
   constructor() {
     this.outputToConsole = false;

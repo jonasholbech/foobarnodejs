@@ -1,13 +1,7 @@
-//import {Storage} from './storage.js';
 const { Storage } = require("./storage.js");
-//import {BeerType,BeerTypes} from './beertype.js';
 const { BeerType, BeerTypes } = require("./beertype.js");
-//import { Tap } from "./tap.js";
 const { Tap } = require("./tap.js");
-//import { Bartender } from "./bartender.js";
 const { Bartender } = require("./bartender.js");
-
-//import { Logger } from "./logger.js";
 const { Logger } = require("./logger.js");
 class Bar {
   constructor(name) {

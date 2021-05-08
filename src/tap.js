@@ -1,4 +1,3 @@
-//import {Logger} from './logger.js';
 const { Logger } = require("./logger.js");
 // A tap is connected directly to a keg
 class Tap {

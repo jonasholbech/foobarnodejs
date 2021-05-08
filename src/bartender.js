@@ -1,4 +1,3 @@
-//import * as Task from './bartender_tasks.js';
 const Task = require("./bartender_tasks.js");
 // A bartender receives an order, creates the beers in the order, and returns it to the customer.
 class Bartender {

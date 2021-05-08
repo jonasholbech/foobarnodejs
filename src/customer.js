@@ -13,5 +13,4 @@ class Customer {
     this.queueEnd = timestamp;
   }
 }
-
 module.exports = { Customer };

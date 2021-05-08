@@ -1,4 +1,3 @@
-//import {Customer} from './customer.js';
 const { Customer } = require("./customer.js");
 const { Order } = require("./order.js");
 const { Beer } = require("./beer.js");

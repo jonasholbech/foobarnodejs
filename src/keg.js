@@ -3,6 +3,7 @@
    - capacity: the total (start) contents of the keg in cl
    - level: the current level of the contents in the keg in cl
 */
+
 class Keg {
   constructor(beerType, capacity) {
     this.beerType = beerType;

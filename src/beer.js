@@ -1,4 +1,5 @@
 // A beer is a glass of beer of a certain type+size. Default 50cl.
+
 class Beer {
   constructor(beerType, size = 50) {
     this.beerType = beerType;

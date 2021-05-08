@@ -1,4 +1,5 @@
 // A beertype has a name and a pouringSpeed (some beers might be slower!)
+
 class BeerType {
   // TODO: Add probability/popularity of this beer
   constructor(info) {

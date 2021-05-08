@@ -1,8 +1,5 @@
-//import {Keg} from './keg.js';
 const { Keg } = require("./keg.js");
-//import {BeerType,BeerTypes} from './beertype.js';
 const { BeerType, BeerTypes } = require("./beertype.js");
-//import {Logger} from './logger.js';
 const { Logger } = require("./logger.js");
 // There can be only one storage-object in the system - it contains a number of kegs with various beertypes in them
 class Storage {

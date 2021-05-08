@@ -1,6 +1,7 @@
 // An order is a list of beers for a customer.
 // The customer creates, and gives the order to the bartender, requesting beers,
 // The bartender then returns the order, with the beers included
+
 class Order {
   constructor(customer) {
     this.customer = customer;

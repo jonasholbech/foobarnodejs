@@ -1,4 +1,3 @@
-//import {Logger} from './logger.js';
 const { Logger } = require("./logger.js");
 class Task {
   constructor(name) {

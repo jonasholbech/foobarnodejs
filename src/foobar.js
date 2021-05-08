@@ -1,5 +1,5 @@
 //====================
-const version = "0.07";
+const version = "0.08";
 //====================
 
 const { Bar } = require("./bar.js");
