@@ -13,7 +13,7 @@
     "express": "^4.17.1"
   },
   "devDependencies": {
-    "nodemon": "^1.12.1"
+    "nodemon": "^2.0.15"
   },
   "keywords": [],
   "author": "",

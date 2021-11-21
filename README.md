@@ -1,6 +1,6 @@
 # Front End Design Elective
 
-## Spring 2021
+## Autumn 2021
 
 ### What is this?
 
